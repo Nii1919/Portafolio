@@ -1,12 +1,12 @@
 import React from "react";
 import { Layout } from "../includes/layout"
 
-const Home: React.FC<any> =()=> {
+const Error404: React.FC<any> =()=> {
   return(
     <Layout>
-      <h1>Home</h1>
+      <h1>Error-404</h1>
     </Layout>
   )
 }
 
-export default Home;
+export default Error404;

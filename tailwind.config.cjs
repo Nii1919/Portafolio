@@ -1,7 +1,7 @@
 import('tailwindcss').Config 
 module.exports = {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.tsx",
   ],
   theme: {
     extend: {},
