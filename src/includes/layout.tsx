@@ -16,7 +16,7 @@ export const Layout =({children}: types)=> {
               <main id="main-content">
                 {children}
               </main>
-              <Footer/>
+              <Footer userType={user.name}/>
             </div>
           )}
         </UserContext.Consumer>
