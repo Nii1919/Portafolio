@@ -1,17 +1,20 @@
-import {useState} from 'react';
-import { createContext, useContext} from "react";
+import React, { useState } from 'react';
 
-const MainContext = createContext({})
-export const useMainContext =()=> useContext(MainContext)
-
+export const ThemeContext = React.createContext('dark');
+export const UserContext = React.createContext({ name: 'admin' });
 interface types {
   children: JSX.Element[] | JSX.Element;
 }
-export const MainContextProvider =({children}: types)=> {
-
-  const [dark, setDark] = useState<boolean>(false);
-
-  <MainContext.Provider value={{dark, setDark}}>
-    {children}
-  </MainContext.Provider>
+export const MainContextProvider = ({children}: types)=> {
+  
+  const [signedInUser, setSignedInUser] = useState<any>()
+  const [theme, setTheme] = useState<any>()
+  
+  return (
+    <ThemeContext.Provider value={theme}>
+      <UserContext.Provider value={signedInUser}>       
+        {children}
+      </UserContext.Provider>
+    </ThemeContext.Provider>
+  )
 }
