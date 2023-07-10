@@ -1,0 +1,12 @@
+html {
+  body {
+    background-color: $black;
+    #page-content {
+      color: $white;
+      #main-content {
+        min-height: 80vh;
+        padding: 100px 0px 80px;
+      }
+    }
+  }
+}

@@ -1,12 +1,15 @@
 import React from "react";
 
-export const HeroBanner: React.FC<any> =()=> {
+interface HeroBannerProps {
+  textTitle?: string
+}
+export const HeroBanner: React.FC<HeroBannerProps> =({ textTitle })=> {
   return(
     <section className="hero-banner">
-      <div className="container-fluid">
+      <div className="container">
         <div className="row">
           <div className="col-xs-12">
-            <h1 className="text-center">Hero banner</h1>
+            <p className="text-cta">{textTitle}</p>
           </div>
         </div>
       </div>
