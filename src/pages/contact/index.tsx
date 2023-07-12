@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout } from "../includes/layout"
+import { Layout } from "../../includes/layout"
 
 const Contact: React.FC<any> =()=> {
   return(

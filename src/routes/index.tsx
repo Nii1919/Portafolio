@@ -1,36 +1,41 @@
+import React, { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-const pages = import.meta.glob("../pages/*.tsx", { eager: true });
 
-interface Route {
-  path: string;
-  Element: JSX.Element;
-  action?: () => void;
-  loader?: () => Promise<any>;
-  ErrorElement?: JSX.Element;
-}
+//initial
+const Home = lazy(() => import("../pages"));
+const About = lazy(() => import("../pages/about"));
+const Contact = lazy(() => import("../pages/contact"));
+const Proyectos = lazy(() => import("../pages/proyectos"));
 
-const routes: Route[] = [];
-for (const path of Object.keys(pages)) {
-  const fileName = path.match(/\.\/pages\/(.*)\.tsx$/)?.[1];
-  if (!fileName) {
-    continue;
-  }
-  const normalizedPathName = fileName.includes("$")
-    ? fileName.replace("$", ":")
-    : fileName.replace(/\/index/, "");
-  routes.push({
-    path: fileName === "home" ? "/" : `/${normalizedPathName.toLowerCase()}`,
-    Element: pages[path].default,
-    loader: pages[path]?.loader,
-    action: pages[path]?.action,
-    ErrorElement: pages[path]?.ErrorBoundary,
-  });
-}
+//proyects
+const TodoApp = lazy(() => import("../pages/proyectos/todo-app"));
+const PokemonApi = lazy(() => import("../pages/proyectos/pokemon-api"));
 
-export const router = createBrowserRouter(
-  routes.map(({ Element, ErrorElement, ...rest }) => ({
-    ...rest,
-    element: <Element />,
-    ...(ErrorElement && { errorElement: <ErrorElement /> }),
-  }))
-);
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
+  },
+  {
+    path: "/projects",
+    element: <Proyectos />,
+    children: [
+      {
+        path: "todo-app",
+        element: <TodoApp />,
+      },
+      {
+        path: "pokemon-api",
+        element: <PokemonApi />,
+      },
+    ],
+  },
+]);

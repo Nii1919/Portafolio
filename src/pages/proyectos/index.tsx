@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout } from "../includes/layout"
+import { Layout } from "../../includes/layout"
 
 const About: React.FC<any> =()=> {
   return(
@@ -8,7 +8,7 @@ const About: React.FC<any> =()=> {
         <div className="container">
           <div className="row">
             <div className="col-xs-12">
-              <h1 className="text-center">About me</h1>
+              <h1 className="text-center">Projects</h1>
             </div>
           </div>
         </div>
